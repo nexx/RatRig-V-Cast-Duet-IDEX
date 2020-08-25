@@ -51,12 +51,12 @@ M950 H0 C"bedheat" T0												; Define Heater0 as the heated bed, bind to Sen
 M140 H0 P0															; Define Heated Bed
 M307 H0 B0															; PID Tuning for Heater0, Heated Bed
 M143 H0 S120														; Set temperature limit for Heater0 to 120C
-M308 S1 P"exp.thermistor3" Y"thermistor" B4725 C7.060000e-8			; Define Sensor1 as Extruder0 temperature
-M950 H1 C"exp.heater3" T1											; Define Heater1 as Extruder0 heater, bind to Sensor1
+M308 S1 P"duex.e2temp" Y"thermistor" B4725 C7.060000e-8		    	; Define Sensor1 as Extruder0 temperature
+M950 H1 C"duex.e2heat" T1											; Define Heater1 as Extruder0 heater, bind to Sensor1
 M307 H1 A693.7 C250.9 D4.6 S1.00 V24.0 B0							; PID Tuning for Heater1
 M143 H1 S285														; Set temperature limit for heater 1 to 285C
-M308 S2 P"exp.thermistor4" Y"thermistor" B4725 C7.060000e-8			; Define Sensor2 as Extruder1 temperature
-M950 H2 C"exp.heater4" T2											; Define Heater2 as Extruder1 heater, bind to Sensor2
+M308 S2 P"duex.e3temp" Y"thermistor" B4725 C7.060000e-8	    		; Define Sensor2 as Extruder1 temperature
+M950 H2 C"duex.e3heat" T2											; Define Heater2 as Extruder1 heater, bind to Sensor2
 M307 H2 A693.7 C250.9 D4.6 S1.00 V24.0 B0							; PID Tuning for Heater2
 M143 H2 S285														; Set temperature limit for heater 2 to 285C
 
