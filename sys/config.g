@@ -13,11 +13,11 @@ M586 P1 S0															; Disable FTP
 M586 P2 S0															; Disable Telnet
 
 ; Drives
-M569 P0 S1															; Drive 0 (Y) goes forwards
-M569 P1 S0															; Drive 1 (Z1) goes backwards
-M569 P2 S0															; Drive 2 (Z2) goes backwards
-M569 P3 S1															; Drive 3 (X) goes forwards
-M569 P4 S1															; Drive 4 (U) goes forwards
+M569 P0 S0															; Drive 0 (Y) goes backwards
+M569 P1 S1															; Drive 1 (Z1) goes forwards
+M569 P2 S1															; Drive 2 (Z2) goes forwards
+M569 P3 S0															; Drive 3 (X) goes backwards
+M569 P4 S0															; Drive 4 (U) goes backwards
 M569 P5 S1															; Drive 5 (E0) goes forwards
 M569 P6 S1															; Drive 6 (E1) goes forwards
 M584 X3 Y0 Z1:2 U4 E5:6												; Driver 0=X, 1=Y, 2+4=Z, 5+6=E0+E1
@@ -34,9 +34,9 @@ M208 X-51.80 Y-26.00 Z0 U0 S1										; Set axes minima
 M208 X310 Y320 Z300 U361.2 S0										; Set axes maxima
 
 ; Endstops
-M574 X1 P"xstop" S1													; Use an endstop on X, stop at low end
+M574 X1 P"duex.e2stop" S1											; Use an endstop on X, stop at low end
 M574 Y1 P"ystop" S1													; Use an endstop on Y, stop at low end
-M574 U2 P"zstop" S1													; Use an endstop on U, stop at high end
+M574 U2 P"duex.e3stop" S1											; Use an endstop on U, stop at high end
 
 ; BLTouch Z-Probe
 M574 Z1 S2															; Define Z endstop at a probe
