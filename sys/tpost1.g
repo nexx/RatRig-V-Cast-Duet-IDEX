@@ -3,5 +3,5 @@
 ;
 
 M106 R2														; Restore part cooling on this tool
-M116 P0														; Wait for this tool to reach printing temperature
+M116 P1														; Wait for this tool to reach printing temperature
 
