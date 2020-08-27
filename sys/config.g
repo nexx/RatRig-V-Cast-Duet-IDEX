@@ -34,30 +34,30 @@ M208 X-51.80 Y-26.00 Z0 U0 S1										; Set axes minima
 M208 X310 Y320 Z300 U361.2 S0										; Set axes maxima
 
 ; Endstops
-M574 X1 P"duex.e2stop" S1											; Use an endstop on X, stop at low end
+M574 X1 P"e0stop" S1												; Use an endstop on X, stop at low end
 M574 Y1 P"ystop" S1													; Use an endstop on Y, stop at low end
-M574 U2 P"duex.e3stop" S1											; Use an endstop on U, stop at high end
+M574 U2 P"e1stop" S1												; Use an endstop on U, stop at high end
 
 ; BLTouch Z-Probe
 M574 Z1 S2															; Define Z endstop at a probe
 M558 P9 C"^zprobe.in" H10 F480 T12000 A5							; Set Z probe to BLTouch, 5mm dive at 8mm/s, 5 attempts
 M950 S0 C"duex.pwm5"												; Create a servo pin on Duex PWM5 header
-G31 P25 X-29.75 Y-14.50 Z0											; Set Z probe trigger value, nozzle offsets, and trigger height
+G31 P25 X-29.75 Y-14.50 Z3.775										; Set Z probe trigger value, nozzle offsets, and trigger height
 M557 X5:280 Y5:295 P10:10											; Define a 10x10 bed mesh
 
 ; Heaters
 M308 S0 P"bedtemp" Y"thermistor" T100000 B4138 C0 R4700				; Define Sensor0 as the heated bed temperature
 M950 H0 C"bedheat" T0												; Define Heater0 as the heated bed, bind to Sensor0
 M140 H0 P0															; Define Heated Bed
-M307 H0 B0															; PID Tuning for Heater0, Heated Bed
+M307 H0 A476.8 C689.6 D2.1 S1.00 V24.1 B0							; PID Tuning for Heater0, Heated Bed
 M143 H0 S120														; Set temperature limit for Heater0 to 120C
 M308 S1 P"duex.e2temp" Y"thermistor" B4725 C7.060000e-8		    	; Define Sensor1 as Extruder0 temperature
 M950 H1 C"duex.e2heat" T1											; Define Heater1 as Extruder0 heater, bind to Sensor1
-M307 H1 A693.7 C250.9 D4.6 S1.00 V24.0 B0							; PID Tuning for Heater1
+M307 H1 A465.0 C164.3 D4.0 S1.00 V24.1 B0							; PID Tuning for Heater1
 M143 H1 S285														; Set temperature limit for heater 1 to 285C
 M308 S2 P"duex.e3temp" Y"thermistor" B4725 C7.060000e-8	    		; Define Sensor2 as Extruder1 temperature
 M950 H2 C"duex.e3heat" T2											; Define Heater2 as Extruder1 heater, bind to Sensor2
-M307 H2 A693.7 C250.9 D4.6 S1.00 V24.0 B0							; PID Tuning for Heater2
+M307 H2 A536.8 C191.7 D4.4 S1.00 V24.1 B0							; PID Tuning for Heater2
 M143 H2 S285														; Set temperature limit for heater 2 to 285C
 
 ; Fans
