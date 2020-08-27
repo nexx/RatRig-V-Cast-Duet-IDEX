@@ -7,8 +7,7 @@ The firmware is designed around the following hardware:
 * E3D V6 hotends
 * Bondtech BMG extuders
 * BLTouch v3.1 Z-probe
-* 1.8° LDO 42STH47-2504AC X/Y stepper motors
-* 1.8° Wantai 42BYGHM811 Z stepper motors
+* 1.8° LDO 42STH47-2504AC X/Y/Z/U stepper motors
 * 1.8° OMC 17HS10-0704S E0/E1 stepper motors
 * Keenovo 750W AC bed heater w/SSR
 * 340x340x6 MIC6 tooling plate print-bed
