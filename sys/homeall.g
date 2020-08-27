@@ -15,6 +15,7 @@ G1 X-999 Y-999 U999 F360 H1									; Move Y-axis to the endstop once more (seco
 G90															; Absolute positioning
 
 ; Home Z using the Z-Probe
+M290 R0 S0													; Reset baby-stepping to 0
 G1 X179.75 Y164.50 F6000									; Move T0 to probing point (X150, Y150), including probe offset
 G30															; Probe the bed and set Z to the probe offset
 
