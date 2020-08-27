@@ -31,7 +31,7 @@ M84 S30																; Set idle timeout
 
 ; Axis Limits
 M208 X-51.80 Y-26.00 Z0 U0 S1										; Set axes minima
-M208 X310 Y320 Z300 U361.2 S0										; Set axes maxima
+M208 X310 Y320 Z300 U361.20 S0										; Set axes maxima
 
 ; Endstops
 M574 X1 P"e0stop" S1												; Use an endstop on X, stop at low end
@@ -73,9 +73,10 @@ M106 P3 S2 H2 T45													; Set Fan3 to Thermostatic control, max RPM at 45C
 ; Tools
 M563 P0 D0 H1 F0 S"X1"												; Tool0 uses Extruder0, Heater1 and Fan0
 G10 P0 X0 Y0 Z0 R0 S0												; Set Tool0 axis offsets and temperatures
-M563 P1 D1 H2 X4 F2 S"X2"											; Tool1 uses Extruder1, Heater2 and Fan2. X-axis is mapped to U
+M563 P1 D1 H2 X3 F2 S"X2"											; Tool1 uses Extruder1, Heater2 and Fan2. X-axis is mapped to U
 G10 P1 X0 Y0 Z0 R0 S0												; Set Tool1 axis offsets and temperatures
 
 ; Additional Settings
 M671 X-93:393 Y150:150 S2.0											; Define Z-axis leadscrew positions for G32
 M404 N1.75															; Define filament diameter for print monitor
+T0																	; Activate T0 by default
