@@ -1,4 +1,4 @@
-; Configuration file for Duet WiFi (firmware version 1.21)
+; Configuration file for Duet WiFi (firmware version 3.1.1)
 ; executed by the firmware on start-up
 
 ; General preferences
@@ -23,15 +23,15 @@ M569 P6 S1															; Drive 6 (E1) goes forwards
 M584 X3 Y0 Z1:2 U4 E5:6												; Driver 0=X, 1=Y, 2+4=Z, 5+6=E0+E1
 M92 X80 Y80 Z400 U80 E425											; Set steps/mm
 M350 X16 Y16 Z16 U16 E16 I1											; Configure micro-stepping with interpolation for all drives
-M203 X18000 Y18000 Z18000 U18000 E3600								; Set maximum speeds (mm/min)
+M203 X12000 Y12000 Z12000 U12000 E3600								; Set maximum speeds (mm/min)
 M201 X500 Y500 Z100 U500 E10000										; Set accelerations (mm/s^2)
 M566 X600 Y600 Z60 U600 E1200										; Set maximum instantaneous speed changes (mm/min)
-M906 X2000 Y2000 Z2000 U2000 E500 I25								; Set motor currents (mA) and motor idle factor in per cent
+M906 X1600 Y1600 Z1600 U1600 E500 I25								; Set motor currents (mA) and motor idle factor in per cent
 M84 S30																; Set idle timeout
 
 ; Axis Limits
 M208 X-51.80 Y-26.00 Z0 U0 S1										; Set axes minima
-M208 X310 Y320 Z300 U361.20 S0										; Set axes maxima
+M208 X310 Y320 Z300 U358 S0											; Set axes maxima
 
 ; Endstops
 M574 X1 P"e0stop" S1												; Use an endstop on X, stop at low end
@@ -40,10 +40,10 @@ M574 U2 P"e1stop" S1												; Use an endstop on U, stop at high end
 
 ; BLTouch Z-Probe
 M574 Z1 S2															; Define Z endstop at a probe
-M558 P9 C"^zprobe.in" H10 F480 T12000 A5							; Set Z probe to BLTouch, 5mm dive at 8mm/s, 5 attempts
+M558 P9 C"^zprobe.in" H5 F480 T12000 A5								; Set Z probe to BLTouch, 5mm dive at 8mm/s, 5 attempts
 M950 S0 C"duex.pwm5"												; Create a servo pin on Duex PWM5 header
-G31 P25 X-29.75 Y-14.50 Z3.775										; Set Z probe trigger value, nozzle offsets, and trigger height
-M557 X5:280 Y5:295 P10:10											; Define a 10x10 bed mesh
+G31 P25 X-29.75 Y-14.50 Z3.80										; Set Z probe trigger value, nozzle offsets, and trigger height
+M557 X5:280 Y5:295 P20												; Define a 20x20 bed mesh
 
 ; Heaters
 M308 S0 P"bedtemp" Y"thermistor" T100000 B4138 C0 R4700				; Define Sensor0 as the heated bed temperature
