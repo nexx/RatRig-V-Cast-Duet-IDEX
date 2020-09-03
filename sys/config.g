@@ -42,7 +42,7 @@ M574 U2 P"e1stop" S1												; Use an endstop on U, stop at high end
 M574 Z1 S2															; Define Z endstop at a probe
 M558 P9 C"^zprobe.in" H5 F480 T12000 A5								; Set Z probe to BLTouch, 5mm dive at 8mm/s, 5 attempts
 M950 S0 C"duex.pwm5"												; Create a servo pin on Duex PWM5 header
-G31 P25 X-29.75 Y-14.50 Z3.80										; Set Z probe trigger value, nozzle offsets, and trigger height
+G31 P25 X-29.75 Y-14.50 Z3.90										; Set Z probe trigger value, nozzle offsets, and trigger height
 M557 X5:280 Y5:295 P20												; Define a 20x20 bed mesh
 
 ; Heaters
@@ -79,4 +79,5 @@ G10 P1 X0 Y0 Z0 R0 S0												; Set Tool1 axis offsets and temperatures
 ; Additional Settings
 M671 X-93:393 Y150:150 S2.0											; Define Z-axis leadscrew positions for G32
 M404 N1.75															; Define filament diameter for print monitor
+M912 P0 S-7.5														; Calibrate MCU temperature
 T0																	; Activate T0 by default
