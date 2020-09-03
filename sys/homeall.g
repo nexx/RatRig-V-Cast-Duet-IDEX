@@ -6,7 +6,9 @@
 M280 P0 S160												; Precautionary alarm release
 M280 P0 S90													; Ensure the pin is raised
 
-T0 P0														; Ensure we are on Tool0 which carries the Z-Probe (P0 skips tool files)
+; Switch tool if required
+if state.currentTool != 0
+	T0 P0													; Switch to Tool0 which carries the Z-Probe (P0 skips tool files)
 
 ; Home X, Y and U simultaneously
 G91															; Relative positioning
