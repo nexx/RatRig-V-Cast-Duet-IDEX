@@ -42,22 +42,22 @@ M574 U2 P"e1stop" S1												; Use an endstop on U, stop at high end
 M574 Z1 S2															; Define Z endstop at a probe
 M558 P9 C"^zprobe.in" H5 F480 T12000 A5								; Set Z probe to BLTouch, 5mm dive at 8mm/s, 5 attempts
 M950 S0 C"duex.pwm5"												; Create a servo pin on Duex PWM5 header
-G31 P25 X-29.75 Y-14.50 Z3.90										; Set Z probe trigger value, nozzle offsets, and trigger height
+G31 P25 X-29.75 Y-14.50 Z3.75										; Set Z probe trigger value, nozzle offsets, and trigger height
 M557 X5:280 Y5:295 P20												; Define a 20x20 bed mesh
 
 ; Heaters
 M308 S0 P"bedtemp" Y"thermistor" T100000 B4138 C0 R4700				; Define Sensor0 as the heated bed temperature
 M950 H0 C"bedheat" T0												; Define Heater0 as the heated bed, bind to Sensor0
 M140 H0 P0															; Define Heated Bed
-M307 H0 A476.8 C689.6 D2.1 S1.00 V24.1 B0							; PID Tuning for Heater0, Heated Bed
+M307 H0 A153.4 C224.4 D2.2 S1.00 V24.1 B0							; PID Tuning for Heater0, Heated Bed (45C)
 M143 H0 S120														; Set temperature limit for Heater0 to 120C
 M308 S1 P"duex.e2temp" Y"thermistor" B4725 C7.060000e-8		    	; Define Sensor1 as Extruder0 temperature
 M950 H1 C"duex.e2heat" T1											; Define Heater1 as Extruder0 heater, bind to Sensor1
-M307 H1 A465.0 C164.3 D4.0 S1.00 V24.1 B0							; PID Tuning for Heater1
+M307 H1 A495.8 C172.0 D3.8 S1.00 V24.1 B0							; PID Tuning for Heater1, X1 (200C)
 M143 H1 S285														; Set temperature limit for heater 1 to 285C
 M308 S2 P"duex.e3temp" Y"thermistor" B4725 C7.060000e-8	    		; Define Sensor2 as Extruder1 temperature
 M950 H2 C"duex.e3heat" T2											; Define Heater2 as Extruder1 heater, bind to Sensor2
-M307 H2 A536.8 C191.7 D4.4 S1.00 V24.1 B0							; PID Tuning for Heater2
+M307 H2 A589.3 C216.6 D4.4 S1.00 V24.1 B0							; PID Tuning for Heater1, X2 (200C)
 M143 H2 S285														; Set temperature limit for heater 2 to 285C
 
 ; Fans
@@ -77,7 +77,7 @@ M563 P1 D1 H2 X3 F2 S"X2"											; Tool1 uses Extruder1, Heater2 and Fan2. X-
 G10 P1 X0 Y0 Z0 R0 S0												; Set Tool1 axis offsets and temperatures
 
 ; Additional Settings
-M671 X-93:393 Y150:150 S2.0											; Define Z-axis leadscrew positions for G32
+M671 X-93:393 Y150:150 S5.0											; Define Z-axis leadscrew positions for G32
 M404 N1.75															; Define filament diameter for print monitor
 M912 P0 S-7.5														; Calibrate MCU temperature
 T0																	; Activate T0 by default
