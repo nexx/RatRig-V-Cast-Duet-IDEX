@@ -15,7 +15,7 @@ elif !sensors.endstops[3].triggered
 
 ; Run filament load procedure
 M291 P"Heating nozzle to 250C..." R"Please wait" T0					; Display message
-G10 S200															; Heat the current tool to 250C
+G10 S250															; Heat the current tool to 250C
 M116																; Wait for nozzle to reach temperature
 M291 P"Please load filament into the extruder and click OK" S2		; Wait for user to continue
 M291 P"Loading filament..." R"Please wait" T0						; Update message
