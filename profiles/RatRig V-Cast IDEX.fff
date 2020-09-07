@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
-<profile name="RatRig V-Cast IDEX" version="2020-09-06 14:19:57" app="S3D-Software 4.1.2">
+<profile name="RatRig V-Cast IDEX" version="2020-09-07 23:02:26" app="S3D-Software 4.1.2">
   <baseProfile>Prusa Mendel (modified)</baseProfile>
   <printMaterial>PLA</printMaterial>
-  <printQuality>0.1mm Layer Height</printQuality>
+  <printQuality>0.2mm Layer Height</printQuality>
   <printExtruders></printExtruders>
   <extruder name="Extruder X1">
     <toolheadNumber>0</toolheadNumber>
@@ -37,9 +37,9 @@
     <wipeDistance>2</wipeDistance>
   </extruder>
   <primaryExtruder>0</primaryExtruder>
-  <layerHeight>0.1</layerHeight>
-  <topSolidLayers>12</topSolidLayers>
-  <bottomSolidLayers>8</bottomSolidLayers>
+  <layerHeight>0.2</layerHeight>
+  <topSolidLayers>6</topSolidLayers>
+  <bottomSolidLayers>4</bottomSolidLayers>
   <perimeterOutlines>2</perimeterOutlines>
   <printPerimetersInsideOut>1</printPerimetersInsideOut>
   <startPointOption>3</startPointOption>
@@ -169,11 +169,11 @@
   <baudRateOverride>115200</baudRateOverride>
   <overridePrinterModels>1</overridePrinterModels>
   <printerModelsOverride></printerModelsOverride>
-  <startingGcode>; Home all axis,G28,,; Heat nozzle and bed to print temperature,G10 P0 S[extruder0_temperature] R160,G10 P1 S[extruder1_temperature] R160,M116,,; Load bed mesh,G29 S1,,; Run nozzle prime macro,M98 P&quot;0:/macros/prime_nozzle.g&quot;</startingGcode>
+  <startingGcode>G28				; Home all,M190 R[bed0_temperature] 			; Heat the bed to temperature,G4 S60				; Sleep for 60s to allow heat soak,M290 R0 S0				; Reset baby-stepping to 0,G32				; Level the gantry,G28 Z				; Re-home Z,G29 S0				; Probe the bed,G1 X-100 Y-100				; Move XY back to home,G10 P0 S[extruder0_temperature] R160		; Heat nozzle to print temperature,G10 P1 S[extruder1_temperature] R160		; Heat nozzle to print temperature,M116				; Wait until temperatures are reached,M98 P&quot;0:/macros/prime_nozzle.g&quot;		; Run nozzle prime macro</startingGcode>
   <layerChangeGcode></layerChangeGcode>
   <retractionGcode></retractionGcode>
   <toolChangeGcode></toolChangeGcode>
-  <endingGcode>G91		; Relative movements,G1 Z10 F6000		; Raise Z by 10mm,G90		; Absolute movements,G1 X0 Y300		; Move Y to front,,M104 S0 		; Turn off hotend,M140 S0		; Turn off heatbed,M107		; Turn off fan,M84		; Disable motors</endingGcode>
+  <endingGcode>G1 Z{move.axes[2].machinePosition+10}		; Raise Z by 10mm,G1 X-100 Y400				; Move X to parked position and Y to front,M104 S0 				; Turn off hotend,M140 S0				; Turn off heatbed,M107				; Turn off fan,M84				; Disable motors</endingGcode>
   <exportFileFormat>gcode</exportFileFormat>
   <celebration>0</celebration>
   <celebrationSong>Star Wars</celebrationSong>
@@ -182,7 +182,7 @@
   <outlineUnderspeed>0.5</outlineUnderspeed>
   <solidInfillUnderspeed>0.8</solidInfillUnderspeed>
   <supportUnderspeed>0.8</supportUnderspeed>
-  <rapidXYspeed>4800</rapidXYspeed>
+  <rapidXYspeed>12000</rapidXYspeed>
   <rapidZspeed>1002</rapidZspeed>
   <minBridgingArea>30</minBridgingArea>
   <bridgingExtraInflation>1</bridgingExtraInflation>
@@ -259,9 +259,7 @@
       <temperatureNumber>0</temperatureNumber>
       <isHeatedBed>1</isHeatedBed>
       <stabilizeAtStartup>1</stabilizeAtStartup>
-      <setpoint layer="1" temperature="110"/>
-      <setpoint layer="4" temperature="105"/>
-      <setpoint layer="7" temperature="100"/>
+      <setpoint layer="1" temperature="100"/>
     </temperatureController>
     <globalExtrusionMultiplier>0.9</globalExtrusionMultiplier>
     <fanSpeed>
