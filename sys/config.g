@@ -59,16 +59,20 @@ M308 S2 P"duex.e3temp" Y"thermistor" B4725 C7.060000e-8	    		; Define Sensor2 a
 M950 H2 C"duex.e3heat" T2											; Define Heater2 as Extruder1 heater, bind to Sensor2
 M307 H2 A589.3 C216.6 D4.4 S1.00 V24.1 B0							; PID Tuning for Heater1, X2 (200C)
 M143 H2 S285														; Set temperature limit for heater 2 to 285C
+M308 S3 Y"mcu-temp" A"MCU"											; Define Sensor3 as the integrated MCU temperature sensor
+M308 S4 Y"drivers" A"TMC Drivers"									; Define Sensor4 as the TMC overheat sensor
 
 ; Fans
 M950 F0 C"fan0" Q20000												; Define Fan0 for T0 Part Cooling
 M106 P0 S0 H-1 C"X1 Part Cooling"									; Set Fan0 to default off, manual control
 M950 F1 C"duex.fan3"												; Define Fan1 for T0 Hotend cooling
-M106 P1 S1 H1 T45													; Set Fan1 to Thermostatic control, max RPM at 45C
+M106 P1 H1 T45														; Set Fan1 to Thermostatic control, max RPM at 45C
 M950 F2 C"fan1" Q20000												; Define Fan2 for T1 Part Cooling
 M106 P2 S0 H-1 C"X2 Part Cooling"									; Set Fan2 to default off, manual control
 M950 F3 C"duex.fan4"												; Define Fan3 for T1 Hotend cooling
-M106 P3 S2 H2 T45													; Set Fan3 to Thermostatic control, max RPM at 45C
+M106 P3 H2 T45														; Set Fan3 to Thermostatic control, max RPM at 45C
+M950 F4 C"!duex.fan5"												; Define Fan4 for Electronics cooling (12V 3-pin PWM blower)
+M106 P4 H3:4 L0.3 T20:45											; Set Fan4 to Thermostatic control, PWM 20C to 45C (TMC overheat = 100% PWM)
 
 ; Tools
 M563 P0 D0 H1 F0 S"X1"												; Tool0 uses Extruder0, Heater1 and Fan0
