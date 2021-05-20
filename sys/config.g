@@ -46,7 +46,7 @@ G31 P25 X-29.75 Y-14.50 Z3.75										; Set Z probe trigger value, nozzle offse
 M557 X5:280 Y5:295 P5												; Define a 5x5 bed mesh
 
 ; Heaters
-M308 S0 P"bedtemp" Y"thermistor" T100000 B4138 C0 R4700				; Define Sensor0 as the heated bed temperature
+M308 S0 P"bedtemp" Y"thermistor" T100000 B3950 C0					; Define Sensor0 as the heated bed temperature
 M950 H0 C"bedheat" T0												; Define Heater0 as the heated bed, bind to Sensor0
 M140 H0 P0															; Define Heated Bed
 M307 H0 A153.4 C224.4 D2.2 S1.00 V24.1 B0							; PID Tuning for Heater0, Heated Bed (45C)
