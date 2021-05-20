@@ -43,7 +43,7 @@ M574 Z1 S2															; Define Z endstop at a probe
 M558 P9 C"^zprobe.in" H5.0 F120 T24000 A5							; Set Z-Probe to type 9 for BLTouch mode, 5mm dive at 2mm/s, 5 attempts
 M950 S0 C"duex.pwm5"												; Create a servo pin on Duex PWM5 header
 G31 P25 X-29.75 Y-14.50 Z3.75										; Set Z probe trigger value, nozzle offsets, and trigger height
-M557 X5:280 Y5:295 P10												; Define a 10x10 bed mesh
+M557 X5:280 Y5:295 P5												; Define a 5x5 bed mesh
 
 ; Heaters
 M308 S0 P"bedtemp" Y"thermistor" T100000 B4138 C0 R4700				; Define Sensor0 as the heated bed temperature
